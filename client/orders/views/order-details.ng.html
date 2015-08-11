@@ -1,0 +1,55 @@
+<md-content class="md-padding">
+    <md-tabs class="md-accent">
+      <md-tab id="tab1">
+        <md-tab-label>Reference</md-tab-label>
+        <md-tab-body>
+            <md-card >
+                <md-card-content >
+                    <h2 class="md-title">{{order.from}} to {{order.to}}</h2>
+                    <br/>
+                    <p>
+                        Order Number: 123
+                    </p>
+                    <p>
+                        Date of transport: {{order.date}}
+                    </p>
+                    <p>
+                        Freight Weight: {{order.freight}}
+                    </p>
+                    <br/>
+                    <md-input-container flex>
+                        <label>Upload Address</label>
+                        <textarea ng-model="order.up" columns="1" md-maxlength="200"></textarea>
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label>Deliver At</label>
+                        <textarea ng-model="order.dn" columns="1" md-maxlength="150"></textarea>
+                    </md-input-container>
+                </md-card-content>
+                <section layout="row" layout-sm="column" layout-align="center center">
+                    <md-button class="md-raised md-primary">SAVE</md-button>
+                </section>
+            </md-card>
+        </md-tab-body>
+      </md-tab>
+      <md-tab id="tab2" ng-click="">
+        <md-tab-label>Tracking</md-tab-label>
+        <md-tab-body>
+            <md-list-item class="md-3-line" ng-repeat="order in orders">
+                <div class="md-list-item-text">
+                    <h3>{{ order.from }}</h3>
+                    <h4>{{ order.to }}</h4>
+                    <p>{{ order.up }}</p>
+                </div>
+       </md-list-item>
+        </md-tab-body>
+      </md-tab>
+      <md-tab id="tab3">
+        <md-tab-label>Payments</md-tab-label>
+        <md-tab-body>
+          View for Item #3 <br/>
+          data.selectedIndex = 2;
+        </md-tab-body>
+      </md-tab>
+    </md-tabs>
+</md-content>

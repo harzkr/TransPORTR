@@ -1,0 +1,58 @@
+<md-content layout-padding>
+    <div layout="row" layout-sm="column" layout-margin layout-fill layout-wrap>
+        <md-input-container flex="33">
+            <label>Ship From</label>
+            <input ng-model="newOrder.from">
+        </md-input-container>
+        <md-input-container flex="33">
+            <label>Ship To</label>
+            <input ng-model="newOrder.to">
+        </md-input-container>
+        <md-input-container flex="33">
+            <label>Select date</label>
+            <input type="date" name="input" ng-model="newOrder.date"
+       placeholder="yyyy-MM-dd" min="2013-01-01" max="2050-12-31" required />
+        </md-input-container>
+        <time-date-picker ng-show="myvalue" on-cancel="onClose()" on-save="onSave($value)" display-mode=""  orientation="" ng-model="newOrder.date"></time-date-picker>
+        <md-input-container flex="33">
+            <label>Freight</label>
+            <input ng-model="newOrder.freight">
+        </md-input-container>
+        <md-input-container flex ="50">
+            <label>Upload Address</label>
+            <textarea ng-model="newOrder.up" columns="1" md-maxlength="200"></textarea>
+        </md-input-container>
+        <md-input-container flex = "50">
+            <label>Deliver At</label>
+            <textarea ng-model="newOrder.dn" columns="1" md-maxlength="150"></textarea>
+        </md-input-container>
+        <section layout="row" layout-sm="column" layout-align="center center" flex="50">
+            <md-button ng-click="orders.push(newOrder)" class="md-raised md-primary">TRANSPORT NOW</md-button>
+        </section>
+        <section layout="row" layout-sm="column" layout-align="center center" flex="33">
+            <md-button ng-click="onShow()" class="md-raised md-primary">TRANSPORT LATER</md-button>
+        </section>
+        <!--lx-date-picker model="datepicker.date" label="Pick a date" locale="fr" allow-clear="true"></lx-date-picker-->
+        <!--div class="lock-size" layout="row" layout-align="center center">
+            <md-fab-speed-dial md-open="demo.isOpen" md-direction="{{demo.selectedDirection}}"
+                         ng-class="demo.selectedMode">
+                <md-fab-trigger>
+                    <md-button class="md-fab md-warn md-icon-button">
+                        <md-icon>menu</md-icon>
+                    </md-button>
+                </md-fab-trigger>
+                <md-fab-actions>
+                    <md-button aria-label="twitter" class="md-fab md-raised md-mini">
+                        <i class="material-icons">check</i>
+                    </md-button>
+                    <md-button aria-label="facebook" class="md-fab md-raised md-mini">
+                        <i class="material-icons">check</i>
+                    </md-button>
+                    <md-button aria-label="Google hangout" class="md-fab md-raised md-mini">
+                        <i class="material-icons">check</i>
+                    </md-button>
+                </md-fab-actions>
+            </md-fab-speed-dial>
+        </div-->
+   </div>
+</md-content>

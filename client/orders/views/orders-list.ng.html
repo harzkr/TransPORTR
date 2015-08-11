@@ -1,0 +1,23 @@
+<md-content>
+  <md-card ng-repeat="order in orders">
+    <md-card-content >
+      <a href="/list/{{order._id}}"><h2 class="md-title">Paracosm</h2></a>
+      <p>
+        FROM : {{ order.from }}
+      </p>
+      <p>
+        TO: {{order.to}}
+      </p>
+      <p>
+         FREIGHT: {{order.freight}}
+     </p>
+     <p>
+         Date of Booking: {{order.date}}
+     </p>  
+    </md-card-content>
+    <div class="md-actions" layout="row" layout-align="end center">
+      <md-button ng-click="remove(order)">CANCEL ORDER</md-button>
+      <md-button>Details</md-button>
+    </div>
+  </md-card>
+</md-content>

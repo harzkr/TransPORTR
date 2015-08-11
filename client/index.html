@@ -1,0 +1,46 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <link rel='stylesheet' href='bower_components/md-date-time/dist/md-date-time.css'>
+  <link rel="stylesheet" href="bower_components/lumx/dist/lumx.css">
+  <link href="css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+  <base href="/">
+</head>
+
+<body layout="column">
+    <md-toolbar class="hue" md-scroll-shrink layout="row" layout-align="start center" layout-padding>
+        <div class="md-toolbar-tools" ng-controller="HomeCtrl">
+            <div>
+                <a href="/Home">TRANSPORTER</a>
+            </div>
+            <md-button ng-click="openLeftMenu()">
+                <md-icon>chevron_right
+                </md-icon>
+            </md-button>
+            <span flex></span>
+            <a href="/list"><md-button class="md-icon-button" aria-label="More">
+                <md-icon>menu</md-icon>
+            </md-button></a>
+        </div>
+    </md-toolbar>
+    <div ui-view ></div>
+    <div ng-controller="HomeCtrl">
+        <md-sidenav md-component-id="menu" class="md-sidenav-right">
+            <md-toolbar md-theme="deep-orange">
+                <h2 class="md-toolbar-tools">Menu</h2>
+            </md-toolbar>
+            <md-list-item ng-click="go('/list')">
+                <md-icon>menu</md-icon>
+                <p> THIS </p>
+            </md-list-item>
+        </md-sidenav>
+    </div>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/velocity/velocity.js"></script>
+    <script src="bower_components/moment/min/moment-with-locales.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/lumx/dist/lumx.js"></script>
+    <script src='/bower_components/md-date-time/dist/md-date-time.js'></script>
+</body>
