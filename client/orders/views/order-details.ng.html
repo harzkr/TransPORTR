@@ -35,11 +35,14 @@
       <md-tab id="tab2" ng-click="">
         <md-tab-label>Tracking</md-tab-label>
         <md-tab-body>
-            <md-list-item class="md-3-line" ng-repeat="order in orders">
+            <md-list-item class="md-3-line" ng-repeat="todo in todos">
+                <md-button class="md-icon-button md-accent" aria-label="Favorite">
+                    <md-icon>looks_one</md-icon>
+                </md-button>
                 <div class="md-list-item-text">
-                    <h3>{{ order.from }}</h3>
-                    <h4>{{ order.to }}</h4>
-                    <p>{{ order.up }}</p>
+                    <h3>{{ todo.checkpoint }}</h3>
+                    <h4>{{ todo.date_time }}</h4>
+                    <p>{{ todo.next_checkpoint }}</p>
                 </div>
        </md-list-item>
         </md-tab-body>
@@ -47,8 +50,32 @@
       <md-tab id="tab3">
         <md-tab-label>Payments</md-tab-label>
         <md-tab-body>
-          View for Item #3 <br/>
-          data.selectedIndex = 2;
+            <md-grid-list
+                md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
+                md-row-height-gt-md="1:1" md-row-height="2:2"
+                md-gutter="12px" md-gutter-gt-sm="8px" >
+            <md-grid-tile class="yellow"
+                md-rowspan="3" md-colspan="2" md-colspan-sm="1">
+                <img src="https://cratejoy.zendesk.com/hc/en-us/article_attachments/200751105/stripe-logo__1_.png" />
+              <md-grid-tile-footer>
+                <h3>STRIPE BASED PAYMENT</h3>
+              </md-grid-tile-footer>
+            </md-grid-tile>
+            <md-grid-tile class="gray"
+                md-rowspan="3" md-colspan="2" md-colspan-sm="1">
+                    <img src="http://limeshot.com/images/blog/euro-logo.png" />
+              <md-grid-tile-footer>
+                <h3>PAY ON DEFFERALS</h3>
+              </md-grid-tile-footer>
+            </md-grid-tile>
+            <md-grid-tile class="green"
+                md-rowspan="3" md-colspan="2" md-colspan-sm="1">
+                <img src="http://www.logotypes101.com/logos/610/296A7B6BCE59A7F2BAD9ABE980775612/pp_h_pms.png"/>
+              <md-grid-tile-footer>
+                <h3>PayPal!</h3>
+              </md-grid-tile-footer>
+            </md-grid-tile>
+          </md-grid-list>
         </md-tab-body>
       </md-tab>
     </md-tabs>

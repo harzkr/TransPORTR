@@ -24,5 +24,6 @@ function($scope, $meteor, $mdSidenav, $location){
         e = (/\d+.\d+.\d+/).exec(e);
         $scope.myvalue = false;
         newOrder.date = e;
-    }
+    };
+    $scope.map = { center: { latitude: 23, longitude: 77 }, zoom: 8 };
 }]);
