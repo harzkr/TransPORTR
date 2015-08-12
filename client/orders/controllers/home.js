@@ -1,7 +1,13 @@
-angular.module("zwyft").controller("HomeCtrl", ['$scope', '$meteor', '$mdSidenav', '$location',
-function($scope, $meteor, $mdSidenav, $location){
+angular.module("zwyft").controller("HomeCtrl", ['$scope', '$rootScope','$meteor', '$mdSidenav', '$location',
+function($scope, $rootScope, $meteor, $mdSidenav, $location){
 
-    $scope.orders = $meteor.collection(Orders);
+    $scope.orders = $meteor.collection(Orders).subscribe('orders');
+
+    $meteor.subscribe('users');
+    $scope.users = $meteor.collection(Meteor.users, false);
+    $scope.getUserById = function(userId){
+      return Meteor.users.findOne(userId);
+    };
 
     $scope.openLeftMenu = function() {
     $mdSidenav('menu').toggle();
@@ -9,6 +15,7 @@ function($scope, $meteor, $mdSidenav, $location){
     $scope.go = function(path){
         $location.path(path);
     };
+
 
     $scope.myvalue = false;
 

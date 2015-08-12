@@ -20,6 +20,9 @@
             </div>
             <div flex offset="33">
                 <a href="/Home">TRANSPORTER</a>
+                <md-button ng-href="/login" ng-hide="$root.currentUser">Login</md-button>
+                <md-button ng-href="/register" ng-hide="$root.currentUser">Sign up</md-button>
+                <md-button ng-href="/logout" ng-show="$root.currentUser">Logout</md-button>
             </div>
             <div flex="5">
                 <a href="/list"><md-button class="md-icon-button" aria-label="More">
@@ -32,11 +35,23 @@
     <div ng-controller="HomeCtrl">
         <md-sidenav md-component-id="menu" class="md-sidenav-right">
             <md-toolbar md-theme="deep-orange">
-                <h2 class="md-toolbar-tools">Menu</h2>
+            <h2 class="md-toolbar-tools">Menu</h2>
             </md-toolbar>
             <md-list-item ng-click="go('/list')">
+                <md-icon>swap_vertical_circle</md-icon>
+                <p> ORDER LOG </p>
+            </md-list-item>
+            <md-list-item ng-click="go('/list')">
                 <md-icon>menu</md-icon>
-                <p> THIS </p>
+                <p> UNDERSTAND TRANSPORTER </p>
+            </md-list-item>
+            <md-list-item ng-click="go('/help')">
+                <md-icon>info</md-icon>
+                <p> HELP </p>
+            </md-list-item>
+            <md-list-item ng-click="go('/logout')">
+                <md-icon>power_settings_new</md-icon>
+                <p> LOGOUT </p>
             </md-list-item>
         </md-sidenav>
     </div>

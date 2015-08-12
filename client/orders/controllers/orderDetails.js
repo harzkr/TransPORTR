@@ -9,8 +9,9 @@ function($scope, $stateParams, $meteor ){
           $scope.data.selectedIndex = Math.max($scope.data.selectedIndex - 1, 0);
         };
 
+        $meteor.subscribe('orders');
         $scope.order = $meteor.object(Orders, $stateParams.orderId);
-
+        $scope.users = $meteor.collection(Meteor.users, false).subscribe('users');
         $scope.todos = [
             {
                 checkpoint: 'City 8',

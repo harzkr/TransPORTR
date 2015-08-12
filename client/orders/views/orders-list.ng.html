@@ -1,7 +1,7 @@
 <md-content>
   <md-card ng-repeat="order in orders">
     <md-card-content >
-      <a href="/list/{{order._id}}"><h2 class="md-title">Paracosm</h2></a>
+      <a href="/list/{{order._id}}"><h2 class="md-title">{{order._id}}</h2></a>
       <p>
         FROM : {{ order.from }}
       </p>
@@ -13,11 +13,11 @@
      </p>
      <p>
          Date of Booking: {{order.date}}
-     </p>  
+     </p>
     </md-card-content>
     <div class="md-actions" layout="row" layout-align="end center">
-      <md-button ng-click="remove(order)">CANCEL ORDER</md-button>
-      <md-button>Details</md-button>
+      <md-button ng-click="remove(order)"><md-icon>clear</md-icon></md-button>
+      <md-button>ORDER APPROVAL</md-button>
     </div>
   </md-card>
 </md-content>
