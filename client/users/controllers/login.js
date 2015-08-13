@@ -28,10 +28,8 @@ angular.module("zwyft").controller("LoginCtrl", ['$meteor', '$state',
         });
     };
     vm.twitter = function(){
-        $meteor.loginWithTwitter(function(error) {
-            if (error) {
-                return console.log(error.reason);
-            }
+        $meteor.loginWithTwitter().then(function() {
+            $state.go('home');
         });
     };
     vm.facebook = function(){

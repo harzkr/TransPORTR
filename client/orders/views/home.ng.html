@@ -1,5 +1,19 @@
 <md-content layout-padding>
-    <div layout="row" layout-sm="column" layout-margin layout-fill layout-wrap>
+    <md-whiteframe layout="row" ng-hide="$root.currentUser || $root.loggingIn" class="md-whiteframe-z1 welcome" layout-align="center center" layout-wrap>
+        <span flex="15"></span>
+        <div flex="25" text-align="right">
+            <h3>Welcome to Transporter</h3>
+        </div>
+        <div layout="row" layout-align="start center" flex="25">
+            <md-button class="btn1" ng-href="/login" ng-hide="$root.currentUser">Login</md-button>
+            <h2>/</h2>
+            <md-button class="btn1" ng-href="/register" ng-hide="$root.currentUser">Sign up</md-button>
+        </div>
+        <div flex="35">
+            <h3>And start Ferrying!</h3>
+        </div>
+  </md-whiteframe>
+    <div ng-show="$root.currentUser" layout="row" layout-sm="column" layout-margin layout-fill layout-wrap>
         <div ng-show="$root.currentUser" flex=10>
             <p>{{$root.currentUser.profile.name}}</p>
         </div>
