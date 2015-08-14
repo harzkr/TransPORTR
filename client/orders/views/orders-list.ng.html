@@ -1,23 +1,49 @@
 <md-content>
   <md-card ng-repeat="order in orders">
     <md-card-content >
-      <a href="/list/{{order._id}}"><h2 class="md-title">{{order._id}}</h2></a>
-      <p>
-        FROM : {{ order.from }}
-      </p>
-      <p>
-        TO: {{order.to}}
-      </p>
-      <p>
-         FREIGHT: {{order.freight}}
-     </p>
-     <p>
-         Date of Booking: {{order.date}}
-     </p>
+        <md-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="1px" md-gutter-gt-sm="1px">
+
+      <md-grid-tile class="gray" md-colspan="2">
+          <md-grid-tile-header>
+              <h3>Order Number</h3>
+          </md-grid-tile-header>
+
+         <p>
+            <a href="/list/{{order._id}}"><h2 class="md-title">{{order._id}}</h2></a>
+         </p>
+        <md-grid-tile-footer>
+          <h3>Approved</h3>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+
+      <md-grid-tile class="yellow">
+          <md-grid-tile-header>
+              <h3>{{ order.from }}</h3>
+          </md-grid-tile-header>
+          FREIGHT: {{order.freight}}
+        <md-grid-tile-footer>
+          <h3>{{order.to}}</h3>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+      <md-grid-tile class="blue" md-colspan="2">
+          <md-grid-tile-header>
+              <h3>Defer or Cancel</h3>
+          </md-grid-tile-header>
+           Date of Booking: {{order.date}}
+        <md-grid-tile-footer>
+          <md-button ng-click="remove(order)"><md-icon>clear</md-icon></md-button>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+      <md-grid-tile class="purple">
+          <md-grid-tile-header>
+              <h3>PayTrack</h3>
+          </md-grid-tile-header>
+           Go to payments
+        <md-grid-tile-footer>
+          <md-button ng-click="remove(order)"><md-icon>clear</md-icon></md-button>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+    </md-grid-list>
     </md-card-content>
-    <div class="md-actions" layout="row" layout-align="end center">
-      <md-button ng-click="remove(order)"><md-icon>clear</md-icon></md-button>
-      <md-button>ORDER APPROVAL</md-button>
-    </div>
   </md-card>
 </md-content>

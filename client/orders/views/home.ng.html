@@ -44,7 +44,7 @@
             <textarea ng-model="newOrder.dn" columns="1" ></textarea>
         </md-input-container>
         <section layout="row" layout-sm="column" layout-align="center center" flex="50">
-            <md-button ng-click="newOrder.owner=$root.currentUser._id; orders.push(newOrder);newOrder='';" class="md-raised md-primary">TRANSPORT NOW</md-button>
+            <md-button ng-click="newOrder.owner=$root.currentUser._id; orders.push(newOrder);newOrder='';showConfirm($event);" class="md-raised md-primary">TRANSPORT NOW</md-button>
         </section>
         <section layout="row" layout-sm="column" layout-align="center center" flex="33">
             <md-button ng-click="onShow()" class="md-raised md-primary">TRANSPORT LATER</md-button>
