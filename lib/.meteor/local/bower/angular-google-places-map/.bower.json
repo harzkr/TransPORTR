@@ -1,0 +1,42 @@
+{
+  "name": "angular-google-places-map",
+  "version": "1.1.5",
+  "authors": [
+    "Davide Pedone <davide.pedone@gmail.com>"
+  ],
+  "main": [
+    "./src/js/ngplacesmap.js",
+    "./dist/js/ngplacesmap.min.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:davidepedone/angular-google-places-map.git"
+  },
+  "description": "AngularJS directive for google maps and places autocomplete",
+  "keywords": [
+    "angular",
+    "google maps",
+    "autocomplete"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.x"
+  },
+  "homepage": "https://github.com/davidepedone/angular-google-places-map",
+  "_release": "1.1.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.1.5",
+    "commit": "fbb0930e3d41d7c408c3911b5d4e42abf433def1"
+  },
+  "_source": "git://github.com/davidepedone/angular-google-places-map.git",
+  "_target": "*",
+  "_originalSource": "angular-google-places-map"
+}

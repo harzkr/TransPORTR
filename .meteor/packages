@@ -20,3 +20,4 @@ accounts-google
 accounts-facebook
 service-configuration
 http
+angular:angular-animate

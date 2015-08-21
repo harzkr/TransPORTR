@@ -1,4 +1,4 @@
-<md-content layout-padding>
+<md-content md-theme="docs-dark" layout-padding>
     <md-whiteframe layout="row" ng-hide="$root.currentUser || $root.loggingIn" class="md-whiteframe-z1 welcome" layout-align="center center" layout-wrap>
         <span flex="15"></span>
         <div flex="25" text-align="right">
@@ -13,64 +13,119 @@
             <h3>And start Ferrying!</h3>
         </div>
   </md-whiteframe>
-    <div ng-show="$root.currentUser" layout="row" layout-sm="column" layout-margin layout-fill layout-wrap>
-        <div ng-show="$root.currentUser" flex=10>
-            <p>{{$root.currentUser.profile.name}}</p>
-        </div>
-        <md-input-container flex="33">
+  <div layout="row">
+    <div ng-show="$root.currentUser" layout="column" layout-sm="column" layout-margin layout-fill layout-wrap flex>
+      <div layout="row">
+        <div flex>
+        <md-input-container>
             <label>Ship From</label>
             <input ng-model="newOrder.from">
         </md-input-container>
-        <md-input-container flex="33">
+        </div>
+        <div flex>
+        <md-input-container>
             <label>Ship To</label>
             <input ng-model="newOrder.to">
         </md-input-container>
-        <md-input-container flex="33">
-            <label>Select date</label>
+        </div>
+     </div>
+        <!--input type="text" g-places-autocomplete ng-model="newOrder.from" /-->
+      <div layout="row" layout-wrap>
+        <div flex="50">
+        <md-input-container ng-click="onShow()">
+            <label>Select Date</label>
             <input type="date" name="input" ng-model="newOrder.date"
        placeholder="yyyy-MM-dd" min="2013-01-01" max="2050-12-31" required />
         </md-input-container>
-        <time-date-picker ng-show="myvalue" on-cancel="onClose()" on-save="onSave($value)" display-mode=""  orientation="" ng-model="newOrder.date"></time-date-picker>
-        <md-input-container flex="33">
+        <!--md-button ng-click="onShow()" class="md-icon"><md-icon>today</md-icon></md-button-->
+       </div>
+        <div flex="50">
+        <md-input-container>
             <label>Freight</label>
             <input ng-model="newOrder.freight">
         </md-input-container>
-        <md-input-container flex ="50">
+        </div>
+        <time-date-picker ng-show="myvalue" on-cancel="onClose()" on-save="onSave($value)" display-mode="date"  orientation="" ng-model="newOrder.date"></time-date-picker>
+        <section ng-show="myvalue3" layout="row" layout-sm="column" layout-align="center center">
+            <md-button ng-click="showpreConfirm()" class="md-icon">GO<md-icon>chevron_right</md-icon></md-button>
+        </section>
+     </div>
+    <div ng-show="myvalue2" layout="row" layout-wrap>
+        <div layout="row">
+            <div flex="50" flex-md="100" layout="column">
+                <div>The Types of Vehicles available on the Route</div>
+                <div layout="row" layout-wrap="">
+                    <div flex="100" ng-repeat="item in items">
+                        <md-checkbox class="color1" ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                            {{ item }}-wheeler <span ng-if="exists(item, selected)">selected</span>
+                        </md-checkbox>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <section layout="row" layout-sm="column" layout-align="center center" flex="50">
+            <md-button ng-click="newOrder.owner=$root.currentUser._id; orders.push(newOrder);newOrder='';showConfirm($event);" class="md-raised md-primary">CONFIRM SELECTION</md-button>
+        </section>
+        <section layout="row" layout-sm="column" layout-align="center center" flex="50">
+            <md-button ng-click="newOrder.owner=$root.currentUser._id; orders.push(newOrder);newOrder='';showConfirm($event);" class="md-raised md-primary">BOOK BY CALL</md-button>
+        </section>
+        <md-input-container flex ="25">
             <label>Upload Address</label>
             <textarea ng-model="newOrder.up" columns="1" ></textarea>
         </md-input-container>
-        <md-input-container flex = "50">
+        <md-input-container flex = "25">
             <label>Deliver At</label>
             <textarea ng-model="newOrder.dn" columns="1" ></textarea>
         </md-input-container>
-        <section layout="row" layout-sm="column" layout-align="center center" flex="50">
-            <md-button ng-click="newOrder.owner=$root.currentUser._id; orders.push(newOrder);newOrder='';showConfirm($event);" class="md-raised md-primary">TRANSPORT NOW</md-button>
-        </section>
-        <section layout="row" layout-sm="column" layout-align="center center" flex="33">
-            <md-button ng-click="onShow()" class="md-raised md-primary">TRANSPORT LATER</md-button>
-        </section>
-        <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
-        <!--lx-date-picker model="datepicker.date" label="Pick a date" locale="fr" allow-clear="true"></lx-date-picker-->
-        <!--div class="lock-size" layout="row" layout-align="center center">
-            <md-fab-speed-dial md-open="demo.isOpen" md-direction="{{demo.selectedDirection}}"
-                         ng-class="demo.selectedMode">
-                <md-fab-trigger>
-                    <md-button class="md-fab md-warn md-icon-button">
-                        <md-icon>menu</md-icon>
-                    </md-button>
-                </md-fab-trigger>
-                <md-fab-actions>
-                    <md-button aria-label="twitter" class="md-fab md-raised md-mini">
-                        <i class="material-icons">check</i>
-                    </md-button>
-                    <md-button aria-label="facebook" class="md-fab md-raised md-mini">
-                        <i class="material-icons">check</i>
-                    </md-button>
-                    <md-button aria-label="Google hangout" class="md-fab md-raised md-mini">
-                        <i class="material-icons">check</i>
-                    </md-button>
-                </md-fab-actions>
-            </md-fab-speed-dial>
-        </div-->
+    </div>
+   </div>
+   <div class="" flex>
+       <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="false" options="options">
+           <ui-gmap-polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible='p.visible'
+                     geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable"></ui-gmap-polyline>
+       </ui-gmap-google-map>
+      </div>
    </div>
 </md-content>
+<script type="text/ng-template" id="dialog1.tmpl.html"><md-dialog aria-label="Mango (Fruit)">
+  <form>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Mango (Fruit)</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="answer('not applicable')">
+        <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content style="max-width:800px;max-height:810px; ">
+    <div>
+      <p>
+        The mango is a juicy stone fruit belonging to the genus Mangifera, consisting of numerous tropical fruiting trees, cultivated mostly for edible fruit. The majority of these species are found in nature as wild mangoes. They all belong to the flowering plant family Anacardiaceae. The mango is native to South and Southeast Asia, from where it has been distributed worldwide to become one of the most cultivated fruits in the tropics.
+      </p>
+
+      <p>
+        The highest concentration of Mangifera genus is in the western part of Malesia (Sumatra, Java and Borneo) and in Burma and India. While other Mangifera species (e.g. horse mango, M. foetida) are also grown on a more localized basis, Mangifera indica&mdash;the "common mango" or "Indian mango"&mdash;is the only mango tree commonly cultivated in many tropical and subtropical regions.
+      </p>
+      <p>
+        It originated in Indian subcontinent (present day India and Pakistan) and Burma. It is the national fruit of India, Pakistan, and the Philippines, and the national tree of Bangladesh. In several cultures, its fruit and leaves are ritually used as floral decorations at weddings, public celebrations, and religious ceremonies.
+      </p>
+    </div>
+  </md-dialog-content>
+
+  <div class="md-actions" layout="row">
+    <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" hide show-md>
+      More on Wikipedia
+    </md-button>
+    <span flex></span>
+    <md-button ng-click="answer('not useful')">
+     Not Useful
+    </md-button>
+    <md-button ng-click="answer('useful')" style="margin-right:20px;">
+      Useful
+    </md-button>
+  </div>
+  </form>
+</md-dialog>
+</script>

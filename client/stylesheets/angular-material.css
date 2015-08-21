@@ -30,8 +30,7 @@ md-toolbar md-icon.md-default-theme {
   }
 
  .angular-google-map-container {
-    height: 300px;
-    width: 1200px;
+    height: 500px;
   }
 
 
@@ -62,4 +61,29 @@ md-toolbar md-icon.md-default-theme {
         background-color: rgba(255, 222, 121, 0.96);
         border-radius: 10px 0 0 10px;
         font-size: 16px;
+}
+.modify0{
+  min-height: 250px;
+  max-width:500px  }
+.modify{
+  background-color:#abcade;
+  min-height: 100px;
+}
+.modify1{
+  background-color:#3abcde;
+  min-height: 100px;
+  max-width:300px;
+}
+.modify2{
+  background-color:#cddc39
+}
+md-checkbox.md-checked.color1 .md-icon {
+ background-color: #657594;
+}
+md-tabs md-ink-bar {
+    color: #657594;
+    background: #657594;
+}
+.shift{
+    float:right;
 }

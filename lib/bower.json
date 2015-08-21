@@ -5,7 +5,9 @@
       "lumx": "0.3.74",
       "mdi": " v1.1.70",
       "md-date-time": "latest",
-      "angular-google-maps": "latest"
+      "angular-google-maps": "latest",
+      "angular-google-places-map": "latest",
+      "angular-google-places-autocomplete": "latest"
   },
   "private": true
 }

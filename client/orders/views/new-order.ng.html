@@ -1,0 +1,21 @@
+<md-content class="md-padding">
+  <form ng-submit="$event.preventDefault()">
+    <p>Use  <code>md-autocomplete</code> to search for matches from local or remote data sources.</p>
+    <md-autocomplete
+        md-selected-item="noc.selectedItem"
+        md-search-text-change="noc.searchTextChange(noc.searchText)"
+        md-search-text="noc.searchText"
+        md-selected-item-change="noc.selectedItemChange(item)"
+        md-items="item in noc.querySearch(noc.searchText)"
+        md-item-text="item.display"
+        md-min-length="0"
+        placeholder="What is your favorite US state?">
+      <md-item-template>
+        <span md-highlight-text="noc.searchText" md-highlight-flags="^i">{{item.display}}</span>
+      </md-item-template>
+      <md-not-found>
+        No matches found for "{{noc.searchText}}".
+      </md-not-found>
+    </md-autocomplete>
+  </form>
+</md-content>

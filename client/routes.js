@@ -53,6 +53,11 @@ angular.module("zwyft").config(['$urlRouterProvider', '$stateProvider', '$locati
             }]
         }
       })
+      .state('profile',{
+          url: '/profile',
+          templateUrl: 'client/users/views/profile.ng.html',
+          controller: 'ProfileCtrl'
+      })
       .state('ordersList', {
         url: '/list',
         templateUrl: 'client/orders/views/orders-list.ng.html',
@@ -72,6 +77,12 @@ angular.module("zwyft").config(['$urlRouterProvider', '$stateProvider', '$locati
                   return $meteor.requireUser();
               }]
           }
+      })
+      .state('newOrder',{
+          url: '/neworder',
+          templateUrl:'client/orders/views/new-order.ng.html',
+          controller: 'NewOrderCtrl',
+          controllerAs: 'noc'
       });
 
     $urlRouterProvider.otherwise("/home");
