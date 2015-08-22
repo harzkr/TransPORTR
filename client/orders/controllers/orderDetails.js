@@ -10,8 +10,35 @@ function($scope, $stateParams, $meteor ){
         };
 
         $meteor.subscribe('orders');
+        $scope.map = { center: { latitude: 23, longitude: 77 }, zoom: 4 };
         $scope.order = $meteor.object(Orders, $stateParams.orderId);
         $scope.users = $meteor.collection(Meteor.users, false).subscribe('users');
+        $scope.polylines = [
+                 {
+                     id: 1,
+                     path: [        {
+                                 latitude: 30,
+                                 longitude: -89
+                             },
+                             {
+                                 latitude: 37,
+                                 longitude: -122
+                             },
+                             {
+                                 latitude: 60,
+                                 longitude: -95
+                             }
+                         ],
+                     stroke: {
+                         color: '#657594',
+                         weight: 3
+                     },
+                     editable: true,
+                     draggable: true,
+                     geodesic: true,
+                     visible: true
+                 }
+             ];
         $scope.todos = [
             {
                 checkpoint: 'City 8',

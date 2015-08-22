@@ -1,4 +1,4 @@
-angular.module('zwyft',['angular-meteor', 'ngMaterial', 'ui.router', 'lumx', 'mdDateTime', 'uiGmapgoogle-maps']);
+angular.module('zwyft',['angular-meteor', 'ngMaterial', 'ui.router', 'lumx', 'mdDateTime', 'uiGmapgoogle-maps','google.places']);
 var themeIcons = ['$mdIconProvider' , function ($mdIconProvider) {
 
   $mdIconProvider

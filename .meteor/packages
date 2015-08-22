@@ -21,3 +21,8 @@ accounts-facebook
 service-configuration
 http
 angular:angular-animate
+jonatan:angular-google-places-autocomplete
+meteorhacks:npm
+
+
+npm-container

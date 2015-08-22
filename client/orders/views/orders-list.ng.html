@@ -1,49 +1,35 @@
 <md-content>
-  <md-card ng-repeat="order in orders">
-    <md-card-content >
-        <md-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="1px" md-gutter-gt-sm="1px">
-
-      <md-grid-tile class="gray" md-colspan="2">
-          <md-grid-tile-header>
-              <h3>Order Number</h3>
-          </md-grid-tile-header>
-
-         <p>
-            <a href="/list/{{order._id}}"><h2 class="md-title">{{order._id}}</h2></a>
-         </p>
-        <md-grid-tile-footer>
-          <h3>Approved</h3>
-        </md-grid-tile-footer>
-      </md-grid-tile>
-
-      <md-grid-tile class="yellow">
-          <md-grid-tile-header>
-              <h3>{{ order.from }}</h3>
-          </md-grid-tile-header>
-          FREIGHT: {{order.freight}}
-        <md-grid-tile-footer>
-          <h3>{{order.to}}</h3>
-        </md-grid-tile-footer>
-      </md-grid-tile>
-      <md-grid-tile class="blue" md-colspan="2">
-          <md-grid-tile-header>
-              <h3>Defer or Cancel</h3>
-          </md-grid-tile-header>
-           Date of Booking: {{order.date}}
-        <md-grid-tile-footer>
-          <md-button ng-click="remove(order)"><md-icon>clear</md-icon></md-button>
-        </md-grid-tile-footer>
-      </md-grid-tile>
-      <md-grid-tile class="purple">
-          <md-grid-tile-header>
-              <h3>PayTrack</h3>
-          </md-grid-tile-header>
-           Go to payments
-        <md-grid-tile-footer>
-          <md-button ng-click="remove(order)"><md-icon>clear</md-icon></md-button>
-        </md-grid-tile-footer>
-      </md-grid-tile>
-    </md-grid-list>
-    </md-card-content>
-  </md-card>
+    <md-list>
+      <md-list-item class="md-3-line" ng-repeat="order in orders">
+        <div class="md-list-item-text">
+        <a href="/list/{{order._id}}"><h2>ORDER NUMBER: {{order._id}}</h2></a>
+         <div layout="row">
+         <div layout="column" layout-align="space-between start" flex layout-padding>
+             <div>
+                 FREIGHT: {{order.freight}}
+             </div>
+             <div>
+                 FROM: {{ order.from }}
+             </div>
+             <div>
+                 TO: {{ order.to }}
+             </div>
+             <h3>Date of Booking: {{order.date}}</h3>
+         </div>
+        <div layout="column" layout-align="space-between end" flex>
+             <div>
+                 <md-button style="color: red;" class="md-raised" ng-click="remove(order)">CANCEL ORDER</md-button>
+            </div>
+            <div>
+                <md-button style="color: greenyellow;" ng-click="remove(order)">APPROVED</md-button>
+           </div>
+           <div>
+               <md-button ng-click="remove(order)">NOT APPROVED</md-button>
+           </div>
+        </div>
+        </div>
+    </div>
+      </md-list-item>
+     <md-divider></md-divider>
+ </md-list>
 </md-content>

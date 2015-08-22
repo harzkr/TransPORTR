@@ -15,8 +15,9 @@ function($scope, $rootScope, $meteor, $mdSidenav,$mdDialog, $location,$log){
     $scope.go = function(path){
         $location.path(path);
     };
-    $scope.items = [4,6,12,24];
-    $scope.selected = [];
+    $scope.addOrder = function(order){
+        $meteor.call('addOrder', order);
+    };
 
     $scope.toggle = function (item, list) {
         var idx = list.indexOf(item);
@@ -27,12 +28,16 @@ function($scope, $rootScope, $meteor, $mdSidenav,$mdDialog, $location,$log){
 $scope.exists = function (item, list) {
     return list.indexOf(item) > -1;
 };
-
+    $scope.myvalue5 = false;
     $scope.myvalue = false;
-
+    $scope.myvalue4 = false;
     $scope.onShow = function(){
         $scope.myvalue = true;
     };
+    $scope.confirmShow = function(){
+        $scope.myvalue4 = true;
+        $scope.myvalue5 = false;
+    }
 
     $scope.onClose = function(){
         $scope.myvalue = false;
@@ -50,6 +55,7 @@ $scope.exists = function (item, list) {
     $scope.showpreConfirm = function(){
         $scope.myvalue2 = true;
         $scope.myvalue3 = false;
+        $scope.myvalue5 = true;
         var a = newOrder.from;
         var b = newOrder.to;
         if(a==="New Delhi" && b==="Jaipur")
@@ -87,36 +93,98 @@ $scope.exists = function (item, list) {
   });
 };
 
-    /*$scope.showAdvanced = function(ev) {
-        $mdDialog.show({
-            controller: HomeCtrl,
-            templateUrl: 'dialog1.tmpl.html',
-            parent: angular.element(document.body),
-            targetEvent: ev,
-            clickOutsideToClose:true
-        })
-        .then(function(answer) {
-            $scope.status = 'You said the information was "' + answer + '".';
-        }, function() {
-            $scope.status = 'You cancelled the dialog.';
-        });
+
+    $scope.hide = function() {
+        $mdDialog.hide();
     };
-});*/
-    $scope.map = { center: { latitude: 23, longitude: 77 }, zoom: 4 };
+    $scope.cancel = function() {
+        $mdDialog.cancel();
+    };
+    $scope.map = { center: { latitude: 23, longitude: 77 }, zoom: 5 };
+
+    $scope.imgchange = true;
+    $scope.imgbring = false;
+    $scope.imgchange1 = true;
+    $scope.imgbring1 = false;
+    $scope.imgchange2 = true;
+    $scope.imgbring2 = false;
+    $scope.imgchange3 = true;
+    $scope.imgbring3 = false;
+
+
+    $scope.imageChange = function(){
+        $scope.imgchange = false;
+        $scope.imgbring = true;
+        newOrder.trucki = true;
+    };
+    $scope.imageBring = function(){
+        $scope.imgchange = true;
+        $scope.imgbring =false;
+        newOrder.trucki = false;
+    };
+    $scope.imageChange1 = function(){
+        $scope.imgchange1 = false;
+        $scope.imgbring1 = true;
+        newOrder.trucki1 = true;
+    };
+    $scope.imageChange2 = function(){
+        $scope.imgchange2 = false;
+        $scope.imgbring2 = true;
+        newOrder.trucki2 = true;
+    };
+    $scope.imageChange3 = function(){
+        $scope.imgchange3 = false;
+        $scope.imgbring3 = true;
+        newOrder.trucki3 = true;
+    };
+    $scope.imageBring1 = function(){
+        $scope.imgchange1 = true;
+        $scope.imgbring1 =false;
+        newOrder.trucki1 = false;
+    };
+    $scope.imageBring2 = function(){
+        $scope.imgchange2 = true;
+        $scope.imgbring2 =false;
+        newOrder.trucki2 = false;
+    };
+    $scope.imageBring3 = function(){
+        $scope.imgchange3 = true;
+        $scope.imgbring3 =false;
+        newOrder.trucki3 = false;
+    };
+
+    $scope.showAdvanced = function(ev) {
+    $mdDialog.show({
+      controller: DialogController,
+      templateUrl: 'dialog1.ng.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true
+    })
+    .then(function(answer) {
+      $scope.myvalue = true;
+    }, function() {
+      $scope.myvalue = false;
+    });
+  };
    $scope.polylines = [
             {
                 id: 1,
                 path: [        {
-                            latitude: 30,
-                            longitude: -89
+                            latitude:28.6139,
+                            longitude: 77.2090
                         },
                         {
-                            latitude: 37,
-                            longitude: -122
+                            latitude: 27.1800,
+                            longitude: 78.0200
                         },
                         {
-                            latitude: 60,
-                            longitude: -95
+                            latitude:25.4486,
+                            longitude: 78.5696
+                        },
+                        {
+                            latitude:21.1500,
+                            longitude:79.0900
                         }
                     ],
                 stroke: {

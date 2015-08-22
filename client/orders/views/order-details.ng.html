@@ -35,14 +35,20 @@
       <md-tab id="tab2" ng-click="">
         <md-tab-label>Tracking</md-tab-label>
         <md-tab-body>
+                <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="false" options="options">
+                    <ui-gmap-polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible='p.visible'
+                            geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable"></ui-gmap-polyline>
+                </ui-gmap-google-map>
+            <div ng-show='{{order.trucks[1]}}'>THIS</div>
             <md-list-item class="md-3-line" ng-repeat="todo in todos">
                 <md-button class="md-icon-button md-accent" aria-label="Favorite">
                     <md-icon>looks_one</md-icon>
                 </md-button>
                 <div class="md-list-item-text">
-                    <h3>{{ todo.checkpoint }}</h3>
-                    <h4>{{ todo.date_time }}</h4>
-                    <p>{{ todo.next_checkpoint }}</p>
+                    <h3>{{ order.trucks[0] }}</h3>
+                    <h4>{{ order.trucks[1] }}</h4>
+                    <p>{{ order.trucks[2] }}</p>
+                    <p>{{ order.trucks[3] }}</p>
                 </div>
        </md-list-item>
         </md-tab-body>
